@@ -1,4 +1,4 @@
-package com.example.abhi.prakitianalysis;
+package com.example.abhi.prakitianalysis.model;
 
 import android.provider.BaseColumns;
 

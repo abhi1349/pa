@@ -1,8 +1,10 @@
-package com.example.abhi.prakitianalysis;
+package com.example.abhi.prakitianalysis.model;
 
 import android.content.ContentValues;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.abhi.prakitianalysis.model.PrakritiContract;
 
 import java.util.ArrayList;
 import java.util.List;

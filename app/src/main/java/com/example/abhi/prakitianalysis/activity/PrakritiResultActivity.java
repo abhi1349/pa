@@ -1,8 +1,10 @@
-package com.example.abhi.prakitianalysis;
+package com.example.abhi.prakitianalysis.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.example.abhi.prakitianalysis.R;
 
 public class PrakritiResultActivity extends AppCompatActivity {
 

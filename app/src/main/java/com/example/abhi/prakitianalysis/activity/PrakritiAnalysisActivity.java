@@ -1,4 +1,4 @@
-package com.example.abhi.prakitianalysis;
+package com.example.abhi.prakitianalysis.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,8 +8,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.abhi.prakitianalysis.model.ModelPrakriti;
+import com.example.abhi.prakitianalysis.adapter.PrakritiAdapter;
+import com.example.abhi.prakitianalysis.model.PrakritiContract;
+import com.example.abhi.prakitianalysis.model.PrakritiDbHelper;
+import com.example.abhi.prakitianalysis.R;
+
 import java.util.ArrayList;
 
 public class PrakritiAnalysisActivity extends AppCompatActivity {

@@ -1,9 +1,12 @@
-package com.example.abhi.prakitianalysis;
+package com.example.abhi.prakitianalysis.model;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.abhi.prakitianalysis.model.PrakritiContract;
+import com.example.abhi.prakitianalysis.model.PrakritiData;
 
 public class PrakritiDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "app.db";

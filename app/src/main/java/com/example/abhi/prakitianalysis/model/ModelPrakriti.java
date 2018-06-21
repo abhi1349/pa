@@ -1,4 +1,4 @@
-package com.example.abhi.prakitianalysis;
+package com.example.abhi.prakitianalysis.model;
 
 public class ModelPrakriti {
     private String questions;
