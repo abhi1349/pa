@@ -6,6 +6,16 @@ public class ModelPrakriti {
     private String pitta;
     private String kapha;
     private String answer;
+    private int checkedId = -1;
+
+    public int getSelectedRadioButtonId() {
+        return checkedId;
+    }
+
+    public void setSelectedRadioButtonId(int checkedId) {
+        this.checkedId = checkedId;
+    }
+
 
     public ModelPrakriti(String questions, String vata, String pitta, String kapha) {
         this.questions = questions;

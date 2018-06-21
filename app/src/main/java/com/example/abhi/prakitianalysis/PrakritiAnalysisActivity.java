@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class PrakritiAnalysisActivity extends AppCompatActivity {
 
-
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     PrakritiAdapter adapter;
@@ -22,7 +21,6 @@ public class PrakritiAnalysisActivity extends AppCompatActivity {
     PrakritiDbHelper helper;
     ModelPrakriti modelPrakriti;
     Button btnSave,btnReset;
-    int vataCount = 0, pittacount = 0 , kaphacount = 0;
     String result = "";
 
     @Override
@@ -36,7 +34,6 @@ public class PrakritiAnalysisActivity extends AppCompatActivity {
         helper = new PrakritiDbHelper(this);
         helper.insert();
 
-
         if (helper.getAll() != null){
             Cursor cursor = helper.getAll();
             cursor.moveToFirst();
@@ -45,12 +42,11 @@ public class PrakritiAnalysisActivity extends AppCompatActivity {
                 String v = cursor.getString(cursor.getColumnIndexOrThrow(PrakritiContract.PrakritiQuestion.COLUMN_VATA));
                 String p = cursor.getString(cursor.getColumnIndexOrThrow(PrakritiContract.PrakritiQuestion.COLUMN_PITTA));
                 String k = cursor.getString(cursor.getColumnIndexOrThrow(PrakritiContract.PrakritiQuestion.COLUMN_KAPHA));
-//                Toast.makeText(this, q, Toast.LENGTH_SHORT).show();
                 modelPrakriti = new ModelPrakriti(q,v,p,k);
                 mylist.add(modelPrakriti);
             }while (cursor.moveToNext());
         }
-//
+
         adapter = new PrakritiAdapter(mylist,PrakritiAnalysisActivity.this);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -65,34 +61,24 @@ public class PrakritiAnalysisActivity extends AppCompatActivity {
                     if (prakritiQues.getAnswer() != null) {
                         if (prakritiQues.getAnswer().equals("vata")){
                             vataCount = vataCount + 1;
-                            Toast.makeText(PrakritiAnalysisActivity.this, "vataCount: "+vataCount, Toast.LENGTH_SHORT).show();
                         }
                         else if (prakritiQues.getAnswer().equals("pitta")){
 
                             pittacount = pittacount + 1;
-                            //                  Toast.makeText(PrakritiAnalysisActivity.this, ""+pittacount, Toast.LENGTH_SHORT).show();
                         }
                         else if (prakritiQues.getAnswer().equals("kapha")){
 
                             kaphacount = kaphacount + 1;
-                            //                  Toast.makeText(PrakritiAnalysisActivity.this, ""+kaphacount, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-
                 if ((vataCount + kaphacount + pittacount) == 10) {
                     if((kaphacount >= vataCount) && (kaphacount >=pittacount))
-                    {    result = "kapha";
-                        Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();}
-                    else if((pittacount >= vataCount)&&(pittacount >=kaphacount)) {
-                        result = "pitta";
-                        Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-                    }
+                    { result = "kapha"; }
+                    else if((pittacount >= vataCount)&&(pittacount >=kaphacount))
+                    { result = "pitta"; }
                     else if((vataCount >= pittacount) && (vataCount >=kaphacount))
-                    {
-                        result = "vata";
-                        Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-                    }
+                    { result = "vata"; }
                 } else {
                     Toast.makeText(getApplicationContext(), "Please give answer of all question", Toast.LENGTH_LONG).show();
                 }

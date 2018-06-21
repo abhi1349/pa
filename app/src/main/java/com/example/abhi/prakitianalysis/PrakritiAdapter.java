@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class PrakritiAdapter extends RecyclerView.Adapter<PrakritiAdapter.ItemViewHolder> {
     //    private int mNumberItems;
-    ArrayList<ModelPrakriti> prakrtiQuestions;
+    private static ArrayList<ModelPrakriti> prakrtiQuestions;
     Activity activity;
 
     public PrakritiAdapter(ArrayList<ModelPrakriti> prakrtiQuestions, Activity activity) {
@@ -38,21 +40,29 @@ public class PrakritiAdapter extends RecyclerView.Adapter<PrakritiAdapter.ItemVi
     @Override
     public void onBindViewHolder(final PrakritiAdapter.ItemViewHolder holder, final int position) {
         final ModelPrakriti modelPrakriti = prakrtiQuestions.get(position);
+
+        holder.radioGroup.setTag(position);
+        if (modelPrakriti.getSelectedRadioButtonId()!= -1){
+            holder.radioGroup.check(modelPrakriti.getSelectedRadioButtonId());
+        }else{
+            holder.radioGroup.clearCheck();
+        }
+
         holder.question.setText(modelPrakriti.getQuestions());
         holder.radioGroup.setTag(position);
         holder.vita.setText(modelPrakriti.getVata());
         holder.kapha.setText(modelPrakriti.getKapha());
         holder.pitta.setText(modelPrakriti.getPitta());
-//        holder.setIsRecyclable(false);
-
 
         holder.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 ModelPrakriti model = prakrtiQuestions.get(position);
                 int radioButtonID = radioGroup.getCheckedRadioButtonId();
-                View radioButton = radioGroup.findViewById(radioButtonID);
-                int idx = radioGroup.indexOfChild(radioButton);
+                int clickedPos= (int) radioGroup.getTag();
+                prakrtiQuestions.get(clickedPos).setSelectedRadioButtonId(radioButtonID);
+                View RadioButton = radioGroup.findViewById(radioButtonID);
+                int idx = radioGroup.indexOfChild(RadioButton);
                 if(idx == 0)
                 {
                     model.setAnswer("vata");
